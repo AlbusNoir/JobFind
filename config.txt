@@ -1,0 +1,5 @@
+location: City, State
+radius: 25 miles
+keywords: it, technology, information technology, sec+, network, helpdesk, support  
+
+# You can leave comments like this is you want
