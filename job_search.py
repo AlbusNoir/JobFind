@@ -4,6 +4,11 @@ import sys
 import re
 import pandas as pd
 from tabulate import tabulate
+import logging
+
+# Before even beginning, establish control for logs to silence the annoying output for sites that blocked us
+logging.disable(logging.CRITICAL)
+
 
 # Attempt to import jobspy
 try:

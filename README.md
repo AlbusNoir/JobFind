@@ -1,6 +1,6 @@
 # Job Search CLI Tool
 
-A Python CLI application that searches the web for jobs, evaluates and sorts them, and displays them in a clean, auto-wrapped terminal table. Uses [`python-jobspy`](https://pypi.org/project/python-jobspy/) under the hood to search major job boards (Currently: LinkedIn, Indeed, Glassdoor, and ZipRecruiter). It also features a "smart synopsis extractor" (or a "filter out the non-relevant stuff") that filters out company introductions, boilerplate, prattling, etc. 
+A Python CLI application that searches the web for jobs, evaluates and sorts them, and displays them in a clean, auto-wrapped terminal table. Uses [`python-jobspy`](https://pypi.org/project/python-jobspy/) under the hood to search major job boards. It also features a "smart synopsis extractor" (or a "filter out the non-relevant stuff") that filters out company introductions, boilerplate, prattling, etc. 
 
 ---
 
@@ -11,6 +11,20 @@ A Python CLI application that searches the web for jobs, evaluates and sorts the
 - **Keyword Scoring and Deduplication**: Deduplicates listings across boards and ranks them based on how closely their titles and descriptions match your search keywords (helps to weed out things that matched your keywords but aren't actually related)
 - **CSV Export**: Will offer to save the file to a CSV by default. Which I guess could be helpful for tracking jobs? It currently overwrites the file so there'd have to be more logic here for long-term tracking...
 - **Unit Tests**: The stuff nobody really looks at but still exists to sanity check the application. I've included them for troubleshooting
+
+---
+
+## Possible Issues
+
+- Some sites have taken ~~ridiculous~~ stances against scraping. I've turned the logging of these errors off so the console isn't bogged down with them, but unfortunately that means some sites won't return results.  
+ 
+**As of June 2026 this is the current status of what works and what doesn't:**  
+- **LinkedIn**: works fine. No issues.  
+- **Indeed**: works fine. No issues.
+- **GlassDoor**: works for a bit if you proxy. This proved ineffective long-term so I removed the option in the script. Logging disabled to prevent the noise about 4XX errors.
+- **ZipRecruiter**: blocking everything. Logging disabled to prevent 403:forbidden error noise.
+
+*For more up-to-date news with what's working/what's not, I'd suggest keeping an eye on the [JobSpy Github page](https://github.com/speedyapply/JobSpy).*
 
 ---
 
@@ -30,7 +44,7 @@ A Python CLI application that searches the web for jobs, evaluates and sorts the
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/AlbusNoir/JobFind.git
    cd JobFind
    ```
 
@@ -43,7 +57,7 @@ A Python CLI application that searches the web for jobs, evaluates and sorts the
 
    python -m venv .venv
    source .venv/bin/activate
-   pip install -r
+   pip install -r requirements.txt
    ```
    *Completely ignore the above if you're feeling spicy and like installing things system-wide (please don't)*
 
